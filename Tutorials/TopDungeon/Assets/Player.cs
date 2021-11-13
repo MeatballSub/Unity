@@ -74,17 +74,11 @@ public class Player : MonoBehaviour
         }
         else if (left_down)
         {
-            Debug.Log(string.Format("Before ({0:F3},{1:F3})", transform.position.x, transform.position.y));
-            Debug.Log(string.Format("Collided with {0:F3}", hit_box.collider.gameObject.transform.position.x));
             transform.position = new Vector3(hit_box.collider.gameObject.transform.position.x + 0.16f, transform.position.y);
-            Debug.Log(string.Format("After ({0:F3},{1:F3})", transform.position.x, transform.position.y));
         }
         else if (right_down)
         {
-            Debug.Log(string.Format("Before ({0:F3},{1:F3})", transform.position.x, transform.position.y));
-            Debug.Log(string.Format("Collided with {0:F3}", hit_box.collider.gameObject.transform.position.x));
             transform.position = new Vector3(hit_box.collider.gameObject.transform.position.x - 0.16f, transform.position.y);
-            Debug.Log(string.Format("After ({0:F3},{1:F3})", transform.position.x, transform.position.y));
         }
     }
 
