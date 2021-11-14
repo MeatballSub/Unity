@@ -37,8 +37,6 @@ public class Player : MonoBehaviour
     {
         bool left_down = (move_delta.x < 0);
         bool right_down = (move_delta.x > 0);
-        bool up_down = (move_delta.y < 0);
-        bool down_down = (move_delta.y > 0);
         float delta_time = Time.deltaTime;
 
         if (left_down)
@@ -58,27 +56,11 @@ public class Player : MonoBehaviour
         {
             transform.Translate(0, vertical_movement * move_granularity, 0);
         }
-        else if(up_down)
-        {
-            transform.position = new Vector3(transform.position.x, hit_box.collider.gameObject.transform.position.y + 0.16f);
-        }
-        else if(down_down)
-        {
-            transform.position = new Vector3(transform.position.x, hit_box.collider.gameObject.transform.position.y - 0.16f);
-        }
 
         hit_box = Physics2D.BoxCast(transform.position, box_collider.size, 0, Horizontal, horizontal_movement * move_granularity, LayerMask.GetMask("Actor", "Blocking"));
         if (hit_box.collider == null)
         {
             transform.Translate(horizontal_movement * move_granularity, 0, 0);
-        }
-        else if (left_down)
-        {
-            transform.position = new Vector3(hit_box.collider.gameObject.transform.position.x + 0.16f, transform.position.y);
-        }
-        else if (right_down)
-        {
-            transform.position = new Vector3(hit_box.collider.gameObject.transform.position.x - 0.16f, transform.position.y);
         }
     }
 
